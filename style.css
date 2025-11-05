@@ -17,6 +17,13 @@ header {
   color: white;
   text-align: center;
   padding: 2rem 1rem;
+  position: relative;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
 }
 
 header h1 {
@@ -27,6 +34,23 @@ header h1 {
 header p {
   font-size: 1.2rem;
   opacity: 0.9;
+}
+
+.admin-access-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.admin-access-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 nav {
@@ -81,6 +105,98 @@ ul {
 li {
   padding: 0.5rem 0;
   font-size: 1.1rem;
+}
+
+/* Slider Styles */
+.slider-container {
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.slider {
+  position: relative;
+  height: 400px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: background 0.3s;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+  left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.next-btn {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: white;
 }
 
 /* Customer Reviews Styles */
@@ -224,10 +340,183 @@ footer {
   margin-top: 2rem;
 }
 
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn-login, .btn-add {
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover, .btn-add:hover {
+  background-color: #1a5fd8;
+}
+
+/* Admin Panel Styles */
+.admin-panel {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 2000;
+  overflow-y: auto;
+}
+
+.admin-header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-logout {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-tabs {
+  display: flex;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab-link {
+  background-color: inherit;
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab-link:hover {
+  background-color: #ddd;
+}
+
+.tab-link.active {
+  background-color: white;
+  border-bottom: 3px solid #2575fc;
+}
+
+.tab-content {
+  display: none;
+  padding: 2rem;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.slider-items, .review-items, .project-items {
+  margin-top: 2rem;
+}
+
+.item-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-preview {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-preview img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.btn-remove {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   header h1 {
     font-size: 2rem;
+  }
+  
+  .admin-access-btn {
+    position: static;
+    margin-top: 1rem;
   }
   
   nav {
@@ -238,6 +527,10 @@ footer {
     margin: 0.25rem;
   }
   
+  .slider {
+    height: 300px;
+  }
+  
   .reviews-container,
   .projects-container {
     grid-template-columns: 1fr;
@@ -245,5 +538,19 @@ footer {
   
   section {
     padding: 1.5rem;
+  }
+  
+  .admin-tabs {
+    flex-direction: column;
+  }
+  
+  .item-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .item-card .btn-remove {
+    align-self: flex-end;
   }
 }
