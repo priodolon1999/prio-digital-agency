@@ -8,14 +8,130 @@
 </head>
 <body>
 
+  <!-- Admin Login Modal -->
+  <div id="adminLoginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Admin Login</h2>
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="adminPanel" class="admin-panel">
+    <div class="admin-header">
+      <h3>Admin Panel</h3>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </div>
+    <div class="admin-tabs">
+      <button class="tab-link active" data-tab="slider">Slider Management</button>
+      <button class="tab-link" data-tab="reviews">Customer Reviews</button>
+      <button class="tab-link" data-tab="projects">Success Projects</button>
+    </div>
+    
+    <div id="sliderTab" class="tab-content active">
+      <h3>Manage Slider Images</h3>
+      <form id="sliderForm">
+        <div class="form-group">
+          <label for="sliderImageUrl">Image URL:</label>
+          <input type="text" id="sliderImageUrl" placeholder="Enter image URL">
+        </div>
+        <div class="form-group">
+          <label for="sliderCaption">Caption (Optional):</label>
+          <input type="text" id="sliderCaption" placeholder="Enter caption">
+        </div>
+        <button type="submit" class="btn-add">Add to Slider</button>
+      </form>
+      <div class="slider-items">
+        <h4>Current Slider Images</h4>
+        <div id="sliderItemsList"></div>
+      </div>
+    </div>
+    
+    <div id="reviewsTab" class="tab-content">
+      <h3>Manage Customer Reviews</h3>
+      <form id="reviewForm">
+        <div class="form-group">
+          <label for="reviewerName">Customer Name:</label>
+          <input type="text" id="reviewerName" required>
+        </div>
+        <div class="form-group">
+          <label for="reviewerPosition">Position/Company:</label>
+          <input type="text" id="reviewerPosition">
+        </div>
+        <div class="form-group">
+          <label for="reviewerImage">Photo URL:</label>
+          <input type="text" id="reviewerImage" placeholder="Enter image URL">
+        </div>
+        <div class="form-group">
+          <label for="reviewText">Review Text:</label>
+          <textarea id="reviewText" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="reviewRating">Rating (1-5):</label>
+          <input type="number" id="reviewRating" min="1" max="5" value="5">
+        </div>
+        <button type="submit" class="btn-add">Add Review</button>
+      </form>
+      <div class="review-items">
+        <h4>Current Reviews</h4>
+        <div id="reviewItemsList"></div>
+      </div>
+    </div>
+    
+    <div id="projectsTab" class="tab-content">
+      <h3>Manage Success Projects</h3>
+      <form id="projectForm">
+        <div class="form-group">
+          <label for="projectTitle">Project Title:</label>
+          <input type="text" id="projectTitle" required>
+        </div>
+        <div class="form-group">
+          <label for="projectDescription">Description:</label>
+          <textarea id="projectDescription" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="projectMediaUrl">Image/Video URL:</label>
+          <input type="text" id="projectMediaUrl" placeholder="Enter image or video URL" required>
+        </div>
+        <div class="form-group">
+          <label for="mediaType">Media Type:</label>
+          <select id="mediaType">
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-add">Add Project</button>
+      </form>
+      <div class="project-items">
+        <h4>Current Projects</h4>
+        <div id="projectItemsList"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header>
-    <h1>Prio Digital Agency</h1>
-    <p>Your partner in Web Design & Digital Marketing</p>
+    <div class="header-content">
+      <h1>Prio Digital Agency</h1>
+      <p>Your partner in Web Design & Digital Marketing</p>
+      <button id="adminAccessBtn" class="admin-access-btn">Admin Login</button>
+    </div>
   </header>
 
   <!-- Navigation -->
   <nav>
+    <a href="#home">Home</a>
     <a href="#services">Services</a>
     <a href="#reviews">Customer Reviews</a>
     <a href="#projects">Success Projects</a>
@@ -24,6 +140,22 @@
 
   <!-- Main Section -->
   <main>
+    <!-- Slider Section -->
+    <section id="home">
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slides">
+            <!-- Slides will be dynamically added here -->
+          </div>
+          <button class="slider-btn prev-btn">&#10094;</button>
+          <button class="slider-btn next-btn">&#10095;</button>
+          <div class="slider-dots">
+            <!-- Dots will be dynamically added here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="services">
       <h2>Our Services</h2>
       <ul>
@@ -37,47 +169,7 @@
     <section id="reviews">
       <h2>Customer Reviews</h2>
       <div class="reviews-container">
-        <div class="review-card">
-          <div class="reviewer-info">
-            <img src="https://via.placeholder.com/60" alt="Customer Photo">
-            <div>
-              <h4>John Smith</h4>
-              <p>CEO, Tech Solutions</p>
-            </div>
-          </div>
-          <div class="review-text">
-            <p>"Prio Digital Agency transformed our online presence completely. Their web design skills are exceptional!"</p>
-            <div class="rating">★★★★★</div>
-          </div>
-        </div>
-        
-        <div class="review-card">
-          <div class="reviewer-info">
-            <img src="https://via.placeholder.com/60" alt="Customer Photo">
-            <div>
-              <h4>Sarah Johnson</h4>
-              <p>Marketing Director</p>
-            </div>
-          </div>
-          <div class="review-text">
-            <p>"Our digital marketing campaign results exceeded expectations. Highly recommended!"</p>
-            <div class="rating">★★★★☆</div>
-          </div>
-        </div>
-        
-        <div class="review-card">
-          <div class="reviewer-info">
-            <img src="https://via.placeholder.com/60" alt="Customer Photo">
-            <div>
-              <h4>Michael Brown</h4>
-              <p>Small Business Owner</p>
-            </div>
-          </div>
-          <div class="review-text">
-            <p>"Professional, responsive, and delivered exactly what we needed. Great value for money."</p>
-            <div class="rating">★★★★★</div>
-          </div>
-        </div>
+        <!-- Reviews will be dynamically added here -->
       </div>
     </section>
 
@@ -85,41 +177,7 @@
     <section id="projects">
       <h2>Success Projects</h2>
       <div class="projects-container">
-        <div class="project-item">
-          <div class="project-media">
-            <img src="https://via.placeholder.com/400x250" alt="Project Image">
-          </div>
-          <div class="project-info">
-            <h3>E-commerce Website</h3>
-            <p>Complete e-commerce solution with payment integration and inventory management.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
-        </div>
-        
-        <div class="project-item">
-          <div class="project-media">
-            <img src="https://via.placeholder.com/400x250" alt="Project Image">
-          </div>
-          <div class="project-info">
-            <h3>Corporate Branding</h3>
-            <p>Complete brand identity including logo, business cards, and marketing materials.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
-        </div>
-        
-        <div class="project-item">
-          <div class="project-media">
-            <video controls>
-              <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="project-info">
-            <h3>Digital Marketing Campaign</h3>
-            <p>Social media marketing campaign that increased engagement by 300%.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
-        </div>
+        <!-- Projects will be dynamically added here -->
       </div>
     </section>
 
